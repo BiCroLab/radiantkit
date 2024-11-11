@@ -75,10 +75,13 @@ install and run radiantkit like this:
    # Assuming that you are in the root folder of the repository
    python3.12 -m venv .venv
    source .venv/bin/activate
+   pip install pipx
+   python -m pipx install .
+   radiantkit -h
+
+   # Or alternatively with pip:
    pip install .
    python -m radiantkit -h
-   # Don't forget to activate the virtual environment
-   # the next time that you use radiantkit
 
 
 Docker

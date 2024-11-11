@@ -148,10 +148,13 @@ install and run radiantkit like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming that you are in the root folder of the repository</span>
 python3.12<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>pipx
+python<span class="w"> </span>-m<span class="w"> </span>pipx<span class="w"> </span>install<span class="w"> </span>.
+radiantkit<span class="w"> </span>-h
+
+<span class="c1"># Or alternatively with pip:</span>
 pip<span class="w"> </span>install<span class="w"> </span>.
 python<span class="w"> </span>-m<span class="w"> </span>radiantkit<span class="w"> </span>-h
-<span class="c1"># Don&#39;t forget to activate the virtual environment</span>
-<span class="c1"># the next time that you use radiantkit</span>
 </pre></div>
 </div>
 </section>
@@ -182,7 +185,7 @@ $<span class="w"> </span>root@7330fbf2843c:/#<span class="w"> </span>radiantkit<
 $<span class="w"> </span>./root/.local/bin/radiantkit<span class="w"> </span><span class="m">0</span>.1.0
 </pre></div>
 </div>
-<p>And you are ready to run it on your local data which you will find
+<p>And you are ready to radiantkit on your local data which you will find
 under <cite>/data</cite> in the container.</p>
 </section>
 </section>

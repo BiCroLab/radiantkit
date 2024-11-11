@@ -45,7 +45,7 @@ are: - ``${channel_name}`` : channel name, lower-cased. -
 
 Leading 0s are added up to 3 digits to any ID seed.
 
-The default template is “``${channel_name}_${series_id}``”. Hence, when
+The default template is ``${channel_name}_${series_id}``. Hence, when
 writing the 3rd series of the “a488” channel, the output file name would
 be: “a488_003.tiff”.
 
@@ -70,6 +70,53 @@ conversion in radiantkit.
 tiff_findoof
 ------------
 
+This module detects and discards images where the nuclei are not
+centered along the axial dimension (z). Just include it in your
+pipeline and the report will be free from those images.
+
+Calculates the gradient magnitude :math:`F_{GM}(z)` for each plane:
+
+.. math::
+
+   F_{GM}(z) = \sum_x \sum_y \left( \frac{\partial I(x,y,z)}{dx}^2 \frac{\partial I(x,y,z)}{dx}^2 \right)^{1/2}
+
+of, if ``--intensity-sum`` is specified,
+
+.. math::
+
+   F_{S}(z) = \sum_x \sum_y I(x,y,z)
+
+
+For non-deconvolved images :math:`F_{GM}` is a proxy for the most
+in-focus plane, or rather the centre of the nuclei. For deconvolved
+images :math:`F_{S}` points out the plane where the nuclei are largest.
+
+The *most-in-focus slice* :math:`z_f` is then calculated as
+
+.. math::
+
+   z_f = \mbox{arg max } F(z)
+
+If :math:`z_f` is not in middle of the stack, the image is considered
+out-of-focus. The middle of the stack is the 50% of the slices closest
+to the middle z-plane, or a larger/smaller proportion when ``--fraction
+f`` is specified.
+
+If you are curious about the results, the file `oof.tsv` will be
+created, which looks like this:
+
+.. code::
+
+   $ cat oof.tsv
+   Z-slice index	Gradient of magnitude	path	response
+   1	21.74676823724797	dapi_002.tif	out-of-focus
+   2	21.872963326063726	dapi_002.tif	out-of-focus
+   3	22.082429165368556	dapi_002.tif	out-of-focus
+   4	22.352404219416595	dapi_002.tif	out-of-focus
+   ...
+
+i.e. for each image and slice it will tell the value of the feature
+that was calculated.
 
 .. literalinclude:: help_tiff_findoof.txt
    :language: none
