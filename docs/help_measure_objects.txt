@@ -1,0 +1,56 @@
+usage: radiantkit measure_objects [-h] [--output OUTPUT]
+                                  [--export-single-voxel] [--aspect Z Y X]
+                                  [--mask-prefix TEXT] [--mask-suffix TEXT]
+                                  [--pickle-name STRING] [--export-instance]
+                                  [--import-instance] [--block-side NUMBER]
+                                  [--use-labels] [--no-rescaling]
+                                  [--uncompressed] [--inreg REGEXP]
+                                  [--threads NUMBER] [-y] [--version]
+                                  input ref_channel
+
+Measure objects from masks. Exports a
+        tabulation-separated table containing the following features: size in
+        voxels, volume in m, surface in m2, shape descriptor(s), sum and mean
+        of voxel intensity values per channel. Also, for each channel, also
+        provides quartiles of single voxel intensity values.
+
+positional arguments:
+  input                 Path to folder containing deconvolved tiff images and
+                        masks.
+  ref_channel           Name of channel with masks to be used.
+
+options:
+  -h, --help            show this help message and exit
+  --output OUTPUT       Path to folder where output should be written to.
+                        Defaults to "objects" subfolder in the input
+                        directory.
+  --export-single-voxel
+                        Export also quantiles of single voxel features.
+  --version             show program's version number and exit
+
+critical arguments:
+  --aspect Z Y X        Physical size of Z, Y and X voxel sides in nm.
+                        Default: 300.0 216.6 216.6
+  --mask-prefix TEXT    Prefix for output binarized images name. Default: ''.
+  --mask-suffix TEXT    Suffix for output binarized images name. Default:
+                        'mask'.
+
+pickle arguments:
+  --pickle-name STRING  Filename for input/output pickle file. Default:
+                        'radiant.pkl'
+  --export-instance     Export pickled series instance.
+  --import-instance     Unpickle instance if pickle file is found.
+
+advanced arguments:
+  --block-side NUMBER   Structural element side for dilation-based background/
+                        foreground measurement. Should be odd. Default: 11.
+  --use-labels          Use labels from masks instead of relabeling.
+  --no-rescaling        Do not rescale image even if deconvolved.
+  --uncompressed        Generate uncompressed TIFF binary masks.
+  --inreg REGEXP        Regular expression to identify input TIFF images. Must
+                        contain 'channel_name' and 'series_id' fields.
+                        Default: '^(?P<dw_flag>dw_)?([^\.]*\.)?(?P<channel_nam
+                        e>[^/]*)_(?P<series_id>[0-
+                        9]+)(?P<ext>(_cmle)?(\.[^\.]*)?\.tiff?)$'
+  --threads NUMBER      Number of threads for parallelization. Default: 1
+  -y, --do-all          Do not ask for settings confirmation and proceed.

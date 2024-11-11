@@ -1,0 +1,31 @@
+usage: radiantkit tiffcu [-h] [-u] [-c] [--inreg REGEXP] [--threads NUMBER]
+                         [--version]
+                         input output
+
+(Un)compress TIFF images.
+Provide either a single input/output image paths, or input/output folder paths.
+In case of folder input/output, all tiff files in the input folder with file
+name matching the specified pattern are (un)compressed and saved to the output
+folder. When (un)compressing multiple files, the --threads option allows to
+parallelize on multiple threads. Disk read/write operations become the
+bottleneck when parallelizing.
+
+positional arguments:
+  input             Path to the TIFF image to (un)compress, or to a folder
+                    containing multiple TIFF images. In the latter case, the
+                    --inreg pattern is used to identify the image file.
+  output            Path to output TIFF image, or output folder if the input
+                    is a folder.
+
+options:
+  -h, --help        show this help message and exit
+  -u                Uncompress TIFF files.
+  -c                Compress TIFF files.
+  --threads NUMBER  Number of threads for parallelization. Used only to
+                    (un)compress multiple images (i.e., input is a folder).
+                    Default: 1
+  --version         show program's version number and exit
+
+advanced arguments:
+  --inreg REGEXP    Regular expression to identify input TIFF images. Default:
+                    '^.*\.tiff?$'

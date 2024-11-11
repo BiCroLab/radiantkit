@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Details &mdash; radiantkit  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="Example usage" href="example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            radiantkit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nd2-to-tiff">nd2_to_tiff</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file-naming">File naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternatives">Alternatives</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tiff-findoof">tiff_findoof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tiff-segment">tiff_segment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alternatives-bypass">Alternatives/bypass</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#radial-population">radial_population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#report">report</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codebase.html">Codebase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Future / to do</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">radiantkit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Details</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="details">
+<span id="ch-details"></span><h1>Details<a class="headerlink" href="#details" title="Link to this heading"></a></h1>
+<p>All RadIAnTkit tools are accessible from the terminal using the
+<code class="docutils literal notranslate"><span class="pre">radiantkit</span></code> entry point.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: radiantkit [-h] [--version] sub_command ...
+</pre></div>
+</div>
+<p>Run <code class="docutils literal notranslate"><span class="pre">radiantkit</span> <span class="pre">-h</span></code> to access the help page directly in the terminal.</p>
+<section id="nd2-to-tiff">
+<h2>nd2_to_tiff<a class="headerlink" href="#nd2-to-tiff" title="Link to this heading"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">radiantkit</span> <span class="pre">nd2_to_tiff</span></code> to convert one or more nd2 files into single
+channel tiff images. You can specify multiple nd2 files, or multiple
+folders containing nd2 files, by separating them with a space. When a
+folder is specified as input, all files matching the “inreg” regular
+expression are converted. You can change the regular expression to
+convert a specific files subset.</p>
+<p>In the case of 3+D images, the script also checks for consistent deltaZ
+distance across consecutive 2D slices (i.e., dZ). If the distance is
+consitent, it is used to set the tiff image dZ metadata. Otherwise, the
+script tries to guess the correct dZ and reports it in the log. If the
+reported dZ is wrong, please enforce the correct one using the -Z
+option. If a correct dZ cannot be automatically guessed, the field of
+view is skipped and a warning is issued to the user. Use the –fields and
+-Z options to convert the skipped field(s).</p>
+<section id="file-naming">
+<h3>File naming<a class="headerlink" href="#file-naming" title="Link to this heading"></a></h3>
+<p>The output tiff file names follow the specified template (-T). A
+template is a string including a series of “seeds” that are replaced by
+the corresponding values when writing the output file. Available seeds
+are: - <code class="docutils literal notranslate"><span class="pre">${channel_name}</span></code> : channel name, lower-cased. -
+<code class="docutils literal notranslate"><span class="pre">${channel_id}</span></code> : channel ID (number). - <code class="docutils literal notranslate"><span class="pre">${series_id}</span></code> : series ID
+(number). - <code class="docutils literal notranslate"><span class="pre">${dimensions}</span></code> : number of dimensions, followed by “D”. -
+<code class="docutils literal notranslate"><span class="pre">${axes_order}</span></code> : axes order (e.g., “TZYX”).</p>
+<p>Leading 0s are added up to 3 digits to any ID seed.</p>
+<p>The default template is “<code class="docutils literal notranslate"><span class="pre">${channel_name}_${series_id}</span></code>”. Hence, when
+writing the 3rd series of the “a488” channel, the output file name would
+be: “a488_003.tiff”.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: radiantkit nd2_to_tiff [-h] [--outdir DIRPATH] [--fields STRING]
+                              [--channels STRING [STRING ...]]
+                              [--deltaZ FLOAT] [--inreg REGEXP]
+                              [--template STRING] [--compressed] [-i] [-l]
+                              [--version]
+                              input [input ...]
+
+Convert one or more nd2 files into single channel tiff images. You can specify multiple
+nd2 files, or multiple folders containing nd2 files, by separating them with a space.
+When a folder is specified as input, all files matching the &quot;inreg&quot; regular expression
+are converted. You can change the regular expression to convert a specific files subset.
+
+In the case of 3+D images, the script also checks for consistent deltaZ distance across
+consecutive 2D slices (i.e., dZ). If the distance is consitent, it is used to set the
+tiff image dZ metadata. Otherwise, the script tries to guess the correct dZ and reports
+it in the log. If the reported dZ is wrong, please enforce the correct one using the -Z
+option. If a correct dZ cannot be automatically guessed, the field of view is skipped
+and a warning is issued to the user. Use the --fields and -Z options to convert the
+skipped field(s).
+
+# File naming
+
+The output tiff file names follow the specified template (-T). A template is a string
+including a series of &quot;seeds&quot; that are replaced by the corresponding values when writing
+the output file. Available seeds are:
+${channel_name} : channel name, lower-cased.
+${channel_id} : channel ID (number).
+${series_id} : series ID (number).
+${dimensions} : number of dimensions, followed by &quot;D&quot;.
+${axes_order} : axes order (e.g., &quot;TZYX&quot;).
+Leading 0s are added up to 3 digits to any ID seed.
+
+The default template is &quot;${channel_name}_${series_id}&quot;. Hence, when
+writing the 3rd series of the &quot;a488&quot; channel, the output file name would be:
+&quot;a488_003.tiff&quot;.
+
+Please, remember to escape the &quot;$&quot; when running from command line if using double
+quotes, i.e., &quot;\$&quot;. Alternatively, use single quotes, i.e., &#39;$&#39;.
+
+positional arguments:
+  input                 Path an nd2 file to convert, or to a folder containing
+                        nd2 files. To specify multiple inputs, separate them
+                        with a space.
+
+options:
+  -h, --help            show this help message and exit
+  --outdir DIRPATH      Path to output TIFF folder. Defaults to the input file
+                        basename. This is ignored when input is a folder.
+  --fields STRING       Convert only fields of view specified as when printing
+                        a set of pages. Omit if all fields should be
+                        converted. E.g., &#39;1-2,5,8-9&#39;.
+  --channels STRING [STRING ...]
+                        Convert only specified channels. Specified as space-
+                        separated channel names. Omit if all channels should
+                        be converted. E.g., &#39;dapi cy5 a488&#39;.
+  --version             show program&#39;s version number and exit
+
+advanced arguments:
+  --deltaZ FLOAT, -Z FLOAT
+                        If provided (in um), the script does not check delta Z
+                        consistency and instead uses the provided one.
+  --inreg REGEXP        Regular expression to identify input ND2 images.
+                        Default: &#39;^.*\.nd2$&#39;
+  --template STRING, -T STRING
+                        Template for output file name. See main description
+                        for more details. Default:
+                        &#39;${channel_name}_${series_id}&#39;
+  --compressed          Write compressed TIFF as output. Useful especially for
+                        binary or low-depth (e.g. labeled) images.
+  -i, --info            Show details of input nd2 files and stop (nothing is
+                        converted).
+  -l, --list            List input nd2 files and stop (nothing is converted).
+</pre></div>
+</div>
+</section>
+<section id="alternatives">
+<h3>Alternatives<a class="headerlink" href="#alternatives" title="Link to this heading"></a></h3>
+<p>Most likely the software on your microscope can export tiff files
+directly. If you use that, make sure that there is only one channel
+per image (and no time series). A general solution is to use <a class="reference external" href="https://fiji.sc/">FIJI</a>
+which is available for all major platforms. For linux there is also
+<a class="reference external" href="https://www.github.com/elgw/nd2tool/">nd2tool</a> which should be both faster and use less memory than the
+conversion in radiantkit.</p>
+</section>
+</section>
+<section id="tiff-findoof">
+<h2>tiff_findoof<a class="headerlink" href="#tiff-findoof" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: radiantkit tiff_findoof [-h] [--output OUTPUT] [--fraction FRACTION]
+                               [--version] [--inreg REGEXP] [--threads NUMBER]
+                               [--intensity-sum] [--rename]
+                               input
+
+Calculate gradient magnitude over Z for every image in the input folder with a
+filename matching the --inreg. Use --range to change the in-focus
+definition.
+
+positional arguments:
+  input                Path to folder with tiff images.
+
+options:
+  -h, --help           show this help message and exit
+  --output OUTPUT      Path to output tsv file. Default: oof.tsv in input
+                       folder.
+  --fraction FRACTION  Fraction of stack (middle-centered) for in-focus
+                       fields. Default: .5
+  --version            show program&#39;s version number and exit
+
+advanced arguments:
+  --inreg REGEXP       Regular expression to identify input TIFF images.
+                       Default: &#39;^(?P&lt;dw_flag&gt;dw_)?([^\.]*\.)?(?P&lt;channel_name
+                       &gt;[^/]*)_(?P&lt;series_id&gt;[0-
+                       9]+)(?P&lt;ext&gt;(_cmle)?(\.[^\.]*)?\.tiff?)$&#39;
+  --threads NUMBER     Number of threads for parallelization. Default: 1
+  --intensity-sum      Use intensity sum instead of gradient magnitude.
+  --rename             Rename out-of-focus images by adding the &#39;.old&#39; suffix.
+</pre></div>
+</div>
+</section>
+<section id="tiff-segment">
+<h2>tiff_segment<a class="headerlink" href="#tiff-segment" title="Link to this heading"></a></h2>
+<p>The <cite>tiff_segment</cite> module will segment the nuclei stained in DAPI or
+similar DNA stain.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: radiantkit tiff_segment [-h] [-o DIRPATH] [--outprefix TEXT]
+                               [--outsuffix TEXT] [--neighbour NUMBER]
+                               [--radius MIN_RADIUS MAX_RADIUS]
+                               [--min-Z FRACTION] [--mask-2d DIRPATH]
+                               [--no-clear-XY] [--clear-Z]
+                               [--gaussian GAUSSIAN] [--only-focus]
+                               [--most-objects] [--dilate-fill-erode NUMBER]
+                               [--TCZYX] [--labeled] [--uncompressed]
+                               [--no-rescaling] [--debug] [--silent]
+                               [--inreg REGEXP] [--threads NUMBER] [-y]
+                               [--version]
+                               input
+
+Perform automatic 3D segmentation of TIFF images. The default parameters are
+optimized for nuclear DNA staining and voxel size of 0.13x0.13x0.3 uM.
+
+The input images are first identified based on a regular expression matched to
+the file name. Then, they are re-scaled (if deconvolved with Huygens software).
+Afterwards, a global (Otsu) and local (gaussian) thresholds are applied to
+binarize the image in 3D. Finally, holes are filled in 3D and closed to remove
+small objects. Finally. objects are filtered based on volume and Z size.
+Moreover, objects touching the XY image borders are discarded.
+
+If a folder path is provided with the -2 option, any binary file with name
+matching the one of an input image will be combined to the binarized image.
+
+Use the --labeled flag to label identified objects with different intensity
+levels. By default, the script generates compressed binary tiff images; use the
+--uncompressed flag to generate normal tiff images instead.
+
+Input images that have the specified prefix and suffix are not segmented.
+
+positional arguments:
+  input                 Path single tiff image, or to folder containing
+                        deconvolved tiff images.
+
+options:
+  -h, --help            show this help message and exit
+  -o DIRPATH            Path to output TIFF folder. Defaults to the input
+                        folder
+  --outprefix TEXT      Prefix for output binarized images name. Default: &#39;&#39;.
+  --outsuffix TEXT      Suffix for output binarized images name. Default:
+                        &#39;mask&#39;.
+  --neighbour NUMBER    Side of neighbourhood region for adaptig thresholding.
+                        Must be odd. Default: 101
+  --radius MIN_RADIUS MAX_RADIUS
+                        Filter range of object radii [px]. Default: [10, Inf]
+  --min-Z FRACTION      Minimum stack fraction occupied by an object. Default:
+                        .25
+  --mask-2d DIRPATH     Path to folder with 2D masks with matching name, to
+                        combine with 3D masks.
+  --no-clear-XY         Do not remove objects touching the XY edges of the
+                        stack.
+  --clear-Z             Remove objects touching the bottom/top of the stack.
+  --gaussian GAUSSIAN   Apply a Gaussian low pass filter to the image
+  --version             show program&#39;s version number and exit
+
+slice arguments:
+  --only-focus          Export mask for the most in-focus slice only.
+  --most-objects        Export mask only for the slice with most objects.
+
+advanced arguments:
+  --dilate-fill-erode NUMBER
+                        Number of pixels for dilation/erosion steps in a
+                        dilate-fill-erode operation. Default: 0. Set to 0 to
+                        skip.
+  --TCZYX               Input is TCZYX instead of TZCYX.
+  --labeled             Export masks as labeled instead of binary.
+  --uncompressed        Generate uncompressed TIFF binary masks.
+  --no-rescaling        Do not rescale image even if deconvolved.
+  --debug               Log also debugging messages. Silenced by --silent.
+  --silent              Limits logs to critical events only.
+  --inreg REGEXP        Regular expression to identify input TIFF images.
+                        Default: &#39;^.*\.tiff?$&#39;
+  --threads NUMBER      Number of threads for parallelization. Default: 1
+  -y, --do-all          Do not ask for settings confirmation and proceed.
+</pre></div>
+</div>
+<section id="alternatives-bypass">
+<h3>Alternatives/bypass<a class="headerlink" href="#alternatives-bypass" title="Link to this heading"></a></h3>
+<p>If you are not happy with the segmentation results you can use any
+other program to perform the segmentation. Just make sure to follow
+the file naming conventions and the later stages of the pipeline will
+be able to use your custom segmentation masks.</p>
+<p>One option to consider is <a class="reference external" href="https://www.ilastik.org/">ilastic</a>.</p>
+</section>
+</section>
+<section id="radial-population">
+<h2>radial_population<a class="headerlink" href="#radial-population" title="Link to this heading"></a></h2>
+<p>This part looks in all nuclei (“particles”) and measures the pixel
+values and distance to lamina at each pixel in the mask.</p>
+<p>In the following image we see to to the top right a cross section of a
+nuclei mask at plane 16. In the top right we see a cross section of
+the Euclidean distance transform from the outside and in. As can be
+seen the distance field has much structure too it. Bottom left: The
+distance from the center (using the default center definition) which
+is much smoother. Buttom right: The final distance field which is used
+in radiantkit.</p>
+<img alt="_images/distances2.png" src="_images/distances2.png" />
+<p>Below follow the complete options for the <cite>radial_population</cite> module.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>It is recommended that <cite>–slice2d</cite> is used in most cases.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.1.1: </span><cite>–slice2d</cite></p>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: radiantkit radial_population [-h] [--output OUTPUT] [--aspect Z Y X]
+                                    [--axes STRING]
+                                    [--center-type {CENTER_OF_MASS,CENTROID,MAX,QUANTILE}]
+                                    [--quantile NUMBER] [--mask-prefix TEXT]
+                                    [--mask-suffix TEXT] [--bins NUMBER]
+                                    [--degree NUMBER] [--slice2d]
+                                    [--pickle-name STRING] [--export-instance]
+                                    [--import-instance] [--block-side NUMBER]
+                                    [--use-labels] [--no-rescaling]
+                                    [--uncompressed] [--inreg REGEXP]
+                                    [--threads NUMBER] [-y] [--version]
+                                    input ref_channel
+
+Generate average radial
+        profiles for a cell population. Requires a folder containing tiff
+        images with grayscale intensities and masks with segmented nuclei.
+        We recommend deconvolving the grayscale images to obtain a better
+        reconstruction of the radial profile.
+
+        Crucial aspect and axes
+
+        A radial profile is intended to be a curve with voxel intensity (Y) as
+        a function of a distance (X). This distance can either be the distance
+        of a voxel from the nuclear lamina, or from the nuclear center. Here,
+        the distance from the nuclear lamina is calculated as the euclidean
+        distance from the background of masks of segmented nuclei. See below,
+        for multiple definitions of nuclear center, accessible via the
+        --center-type parameter. The profile is also generated for a normalized
+        lamina distance, obtain by dividing the absolute lamina distance of a
+        voxel by the sum of absolute lamina and center distances.
+
+        Center definitions:
+        - Centroid: ...
+        - Center of Mass: ...
+        - Quantile: ...
+        - Maxima: ...
+
+        Bins and degree, polynomial fit
+
+        Roots
+        
+
+positional arguments:
+  input                 Path to folder containing deconvolved tiff images and
+                        masks.
+  ref_channel           Name of channel with DNA staining intensity.
+
+options:
+  -h, --help            show this help message and exit
+  --output OUTPUT       Path to folder where output should be written to.
+                        Defaults to &quot;objects&quot; subfolder in the input
+                        directory.
+  --version             show program&#39;s version number and exit
+
+critical arguments:
+  --aspect Z Y X        Physical size of Z, Y and X voxel sides in nm.
+                        Default: 300.0 216.6 216.6
+  --axes STRING         Axes to be used for distance calculation.
+  --center-type {CENTER_OF_MASS,CENTROID,MAX,QUANTILE}
+                        Type of center for distance normalization. Default:
+                        QUANTILE
+  --quantile NUMBER     Quantile used to identify the center when &#39;--center-
+                        type QUANTILE&#39; is used. A number from 0 to 1 is
+                        expected. Defaults to 1e-N where N is the number of
+                        axes in an image.
+  --mask-prefix TEXT    Prefix for output binarized images name. Default: &#39;&#39;.
+  --mask-suffix TEXT    Suffix for output binarized images name. Default:
+                        &#39;mask&#39;.
+  --bins NUMBER         Number of bins for polynomial fitting. Default: 200.
+  --degree NUMBER       Degree of polynomial fitting. Default: 5.
+  --slice2d             Perform measurements only in one lateral plane. The
+                        plane where each nuclei has the largest cross section
+                        area will be used.
+
+pickle arguments:
+  --pickle-name STRING  Filename for input/output pickle file. Default:
+                        &#39;radiant.pkl&#39;
+  --export-instance     Export pickled series instance.
+  --import-instance     Unpickle instance if pickle file is found.
+
+advanced arguments:
+  --block-side NUMBER   Structural element side for dilation-based background/
+                        foreground measurement. Should be odd. Default: 11.
+  --use-labels          Use labels from masks instead of relabeling.
+  --no-rescaling        Do not rescale image even if deconvolved.
+  --uncompressed        Generate uncompressed TIFF binary masks.
+  --inreg REGEXP        Regular expression to identify input TIFF images. Must
+                        contain &#39;channel_name&#39; and &#39;series_id&#39; fields.
+                        Default: &#39;^(?P&lt;dw_flag&gt;dw_)?([^\.]*\.)?(?P&lt;channel_nam
+                        e&gt;[^/]*)_(?P&lt;series_id&gt;[0-
+                        9]+)(?P&lt;ext&gt;(_cmle)?(\.[^\.]*)?\.tiff?)$&#39;
+  --threads NUMBER      Number of threads for parallelization. Default: 1
+  -y, --do-all          Do not ask for settings confirmation and proceed.
+</pre></div>
+</div>
+</section>
+<section id="report">
+<h2>report<a class="headerlink" href="#report" title="Link to this heading"></a></h2>
+<p>This module is run as the last step to generate a report based on the
+data available from the previous steps.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: radiantkit report [-h] [--subdir STRING] [--not-root] [--inreg REGEXP]
+                         [--offline] [--version]
+                         input
+
+Long description
+
+positional arguments:
+  input            Path to folder with radiant output.
+
+options:
+  -h, --help       show this help message and exit
+  --version        show program&#39;s version number and exit
+
+advanced arguments:
+  --subdir STRING  Name of subfolder for nested search. Default: &#39;objects&#39;
+  --not-root       Input folder is single-condition (not root folder).
+  --inreg REGEXP   Regular expression to identify input TIFF images. Must
+                   contain &#39;channel_name&#39; and &#39;series_id&#39; fields. Default: &#39;^(
+                   ?P&lt;dw_flag&gt;dw_)?([^\.]*\.)?(?P&lt;channel_name&gt;[^/]*)_(?P&lt;seri
+                   es_id&gt;[0-9]+)(?P&lt;ext&gt;(_cmle)?(\.[^\.]*)?\.tiff?)$&#39;
+  --offline        Generate report that does not require a live internet
+                   connection to be visualized.
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example.html" class="btn btn-neutral float-left" title="Example usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, BiCroLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

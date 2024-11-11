@@ -1,0 +1,65 @@
+usage: radiantkit select_nuclei [-h] [--version] [--k-sigma NUMBER]
+                                [--mask-prefix TEXT] [--mask-suffix TEXT]
+                                [--pickle-name STRING] [--export-instance]
+                                [--import-instance] [--block-side NUMBER]
+                                [--use-labels] [--no-rescaling] [--no-remove]
+                                [--uncompressed] [--inreg REGEXP]
+                                [--threads NUMBER] [-y]
+                                input ref_channel
+
+Select nuclei (objects) from segmented images based on their size (volume in
+3D, area in 2D) and integral of intensity from raw image.
+
+To achieve this, the script looks for mask/raw image pairs in the input folder.
+Mask images are identified by the specified prefix/suffix. For example, a pair
+with suffix "mask" would be:
+    [RAW] "dapi_001.tiff" and [MASK] "dapi_001.mask.tiff".
+
+Nuclei are extracted and size and integral of intensity are calculated. Then,
+their density profile is calculated across all images. A sum of Gaussian is fit
+to the profiles and a range of +-k_sigma around the peak of the first Gaussian
+is selected. If the fit fails, a single Gaussian is fitted and the range is
+selected in the same manner around its peak. If this fit fails, the selected
+range corresponds to the FWHM range around the first peak of the profiles. In
+the last scenario, k_sigma is ignored.
+
+A tabulation-separated table is generated with the nuclear features and whether
+they pass the filter(s). Alongside it, an html report is generated with
+interactive data visualization.
+
+positional arguments:
+  input                 Path to folder containing deconvolved tiff images and
+                        masks.
+  ref_channel           Name of channel with DNA staining intensity.
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+
+critical arguments:
+  --k-sigma NUMBER      Suffix for output binarized images name. Default: 2.5
+  --mask-prefix TEXT    Prefix for output binarized images name. Default: ''.
+  --mask-suffix TEXT    Suffix for output binarized images name. Default:
+                        'mask'.
+
+pickle arguments:
+  --pickle-name STRING  Filename for input/output pickle file. Default:
+                        'radiant.pkl'
+  --export-instance     Export pickled images instance.
+  --import-instance     Unpickle instance if pickle file is found.
+
+advanced arguments:
+  --block-side NUMBER   Structural element side for dilation-based background/
+                        foreground measurement. Should be odd. Default: 11.
+  --use-labels          Use labels from masks instead of relabeling.
+  --no-rescaling        Do not rescale image even if deconvolved.
+  --no-remove           Do not export masks after removing discarded nuclei
+                        labels.
+  --uncompressed        Generate uncompressed TIFF binary masks.
+  --inreg REGEXP        Regular expression to identify input TIFF images. Must
+                        contain 'channel_name' and 'series_id' fields.
+                        Default: '^(?P<dw_flag>dw_)?([^\.]*\.)?(?P<channel_nam
+                        e>[^/]*)_(?P<series_id>[0-
+                        9]+)(?P<ext>(_cmle)?(\.[^\.]*)?\.tiff?)$'
+  --threads NUMBER      Number of threads for parallelization. Default: 1
+  -y, --do-all          Do not ask for settings confirmation and proceed.

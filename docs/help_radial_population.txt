@@ -1,0 +1,93 @@
+usage: radiantkit radial_population [-h] [--output OUTPUT] [--aspect Z Y X]
+                                    [--axes STRING]
+                                    [--center-type {CENTER_OF_MASS,CENTROID,MAX,QUANTILE}]
+                                    [--quantile NUMBER] [--mask-prefix TEXT]
+                                    [--mask-suffix TEXT] [--bins NUMBER]
+                                    [--degree NUMBER] [--slice2d]
+                                    [--pickle-name STRING] [--export-instance]
+                                    [--import-instance] [--block-side NUMBER]
+                                    [--use-labels] [--no-rescaling]
+                                    [--uncompressed] [--inreg REGEXP]
+                                    [--threads NUMBER] [-y] [--version]
+                                    input ref_channel
+
+Generate average radial
+        profiles for a cell population. Requires a folder containing tiff
+        images with grayscale intensities and masks with segmented nuclei.
+        We recommend deconvolving the grayscale images to obtain a better
+        reconstruction of the radial profile.
+
+        Crucial aspect and axes
+
+        A radial profile is intended to be a curve with voxel intensity (Y) as
+        a function of a distance (X). This distance can either be the distance
+        of a voxel from the nuclear lamina, or from the nuclear center. Here,
+        the distance from the nuclear lamina is calculated as the euclidean
+        distance from the background of masks of segmented nuclei. See below,
+        for multiple definitions of nuclear center, accessible via the
+        --center-type parameter. The profile is also generated for a normalized
+        lamina distance, obtain by dividing the absolute lamina distance of a
+        voxel by the sum of absolute lamina and center distances.
+
+        Center definitions:
+        - Centroid: ...
+        - Center of Mass: ...
+        - Quantile: ...
+        - Maxima: ...
+
+        Bins and degree, polynomial fit
+
+        Roots
+        
+
+positional arguments:
+  input                 Path to folder containing deconvolved tiff images and
+                        masks.
+  ref_channel           Name of channel with DNA staining intensity.
+
+options:
+  -h, --help            show this help message and exit
+  --output OUTPUT       Path to folder where output should be written to.
+                        Defaults to "objects" subfolder in the input
+                        directory.
+  --version             show program's version number and exit
+
+critical arguments:
+  --aspect Z Y X        Physical size of Z, Y and X voxel sides in nm.
+                        Default: 300.0 216.6 216.6
+  --axes STRING         Axes to be used for distance calculation.
+  --center-type {CENTER_OF_MASS,CENTROID,MAX,QUANTILE}
+                        Type of center for distance normalization. Default:
+                        QUANTILE
+  --quantile NUMBER     Quantile used to identify the center when '--center-
+                        type QUANTILE' is used. A number from 0 to 1 is
+                        expected. Defaults to 1e-N where N is the number of
+                        axes in an image.
+  --mask-prefix TEXT    Prefix for output binarized images name. Default: ''.
+  --mask-suffix TEXT    Suffix for output binarized images name. Default:
+                        'mask'.
+  --bins NUMBER         Number of bins for polynomial fitting. Default: 200.
+  --degree NUMBER       Degree of polynomial fitting. Default: 5.
+  --slice2d             Perform measurements only in one lateral plane. The
+                        plane where each nuclei has the largest cross section
+                        area will be used.
+
+pickle arguments:
+  --pickle-name STRING  Filename for input/output pickle file. Default:
+                        'radiant.pkl'
+  --export-instance     Export pickled series instance.
+  --import-instance     Unpickle instance if pickle file is found.
+
+advanced arguments:
+  --block-side NUMBER   Structural element side for dilation-based background/
+                        foreground measurement. Should be odd. Default: 11.
+  --use-labels          Use labels from masks instead of relabeling.
+  --no-rescaling        Do not rescale image even if deconvolved.
+  --uncompressed        Generate uncompressed TIFF binary masks.
+  --inreg REGEXP        Regular expression to identify input TIFF images. Must
+                        contain 'channel_name' and 'series_id' fields.
+                        Default: '^(?P<dw_flag>dw_)?([^\.]*\.)?(?P<channel_nam
+                        e>[^/]*)_(?P<series_id>[0-
+                        9]+)(?P<ext>(_cmle)?(\.[^\.]*)?\.tiff?)$'
+  --threads NUMBER      Number of threads for parallelization. Default: 1
+  -y, --do-all          Do not ask for settings confirmation and proceed.

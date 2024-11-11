@@ -1,0 +1,17 @@
+usage: radiantkit pipeline [-h] [--conda-env STRING] [--shell-type STRING]
+                           [-f] [--version]
+                           name root
+
+Long description
+
+positional arguments:
+  name                 Name of the workflow. Available: yfish
+  root                 Path to folder where to set up the workflow.
+
+options:
+  -h, --help           show this help message and exit
+  --conda-env STRING   Name of the conda environment where radiantkit is
+                       installed to.
+  --shell-type STRING  Shell type where to run snakemake. One of: bash, zsh.
+  -f                   Overwrite existing folder.
+  --version            show program's version number and exit

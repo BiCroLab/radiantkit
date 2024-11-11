@@ -1,0 +1,48 @@
+usage: radiantkit export_objects [-h] [--output OUTPUT] [--mask-prefix TEXT]
+                                 [--mask-suffix TEXT] [--pickle-name STRING]
+                                 [--export-instance] [--import-instance]
+                                 [--use-labels] [--no-rescaling]
+                                 [--uncompressed] [--inreg REGEXP]
+                                 [--threads NUMBER] [-y] [--version]
+                                 input ref_channel
+
+Export objects from masks as TIFF images.
+        Each tiff name contains the series ID and nucleus label.
+        A tiff is exported for each of the following: mask, grayscale image for
+        each channel, distance from lamina, and distance from center.
+        Distance maps are exported only if previously calculated.
+
+positional arguments:
+  input                 Path to folder containing deconvolved tiff images and
+                        masks.
+  ref_channel           Name of channel with masks to be used.
+
+options:
+  -h, --help            show this help message and exit
+  --output OUTPUT       Path to folder where output should be written to.
+                        Defaults to "objects" subfolder in the input
+                        directory.
+  --version             show program's version number and exit
+
+critical arguments:
+  --mask-prefix TEXT    Prefix for output binarized images name. Default: ''.
+  --mask-suffix TEXT    Suffix for output binarized images name. Default:
+                        'mask'.
+
+pickle arguments:
+  --pickle-name STRING  Filename for input/output pickle file. Default:
+                        'radiant.pkl'
+  --export-instance     Export pickled series instance.
+  --import-instance     Unpickle instance if pickle file is found.
+
+advanced arguments:
+  --use-labels          Use labels from masks instead of relabeling.
+  --no-rescaling        Do not rescale image even if deconvolved.
+  --uncompressed        Generate uncompressed TIFF binary masks.
+  --inreg REGEXP        Regular expression to identify input TIFF images. Must
+                        contain 'channel_name' and 'series_id' fields.
+                        Default: '^(?P<dw_flag>dw_)?([^\.]*\.)?(?P<channel_nam
+                        e>[^/]*)_(?P<series_id>[0-
+                        9]+)(?P<ext>(_cmle)?(\.[^\.]*)?\.tiff?)$'
+  --threads NUMBER      Number of threads for parallelization. Default: 1
+  -y, --do-all          Do not ask for settings confirmation and proceed.

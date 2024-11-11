@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example usage &mdash; radiantkit  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Details" href="usage.html" />
+    <link rel="prev" title="radiantkit version 0.1.0" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            radiantkit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#extract-images-as-tiff-files-from-nd2">Extract images as tiff files from nd2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#segment-nuclei">Segment nuclei</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-radial-profiles">Extract radial profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-nuclei">Select nuclei</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-a-report">Generate a report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-script">Example script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codebase.html">Codebase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Future / to do</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">radiantkit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-usage">
+<h1>Example usage<a class="headerlink" href="#example-usage" title="Link to this heading"></a></h1>
+<p>This section gives a brief presentation of the steps together with
+examples of actual command line usage. It ends with a complete script
+that could be used to process a dataset with only a few
+modifications. The next <a class="reference internal" href="usage.html#ch-details"><span class="std std-ref">section, details,</span></a> shows all command line
+options and contain in depth descriptions of some of the steps.</p>
+<section id="extract-images-as-tiff-files-from-nd2">
+<h2>Extract images as tiff files from nd2<a class="headerlink" href="#extract-images-as-tiff-files-from-nd2" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>radiantkit<span class="w"> </span>nd2_to_tiff<span class="w"> </span>CJ_20240702_CJ052_SLIDE012.nd2
+</pre></div>
+</div>
+</section>
+<section id="segment-nuclei">
+<h2>Segment nuclei<a class="headerlink" href="#segment-nuclei" title="Link to this heading"></a></h2>
+<p>Please check the command line options with</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>radiantkit<span class="w"> </span>tiff_segment<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>In this case we let radiantkit know the name of the channel containing
+the nuclei, ask to apply a mild low pass filter and allows it to use 8
+threads. Please note that options like <cite>–only-focus</cite> produce 2D
+images and that is not supported in the downstreams analysis at the moment.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>radiantkit<span class="w"> </span>tiff_segment<span class="w"> </span>--gaussian<span class="w"> </span><span class="m">2</span><span class="w"> </span>CJ_20240702_CJ052_SLIDE012<span class="w"> </span>--inreg<span class="w"> </span><span class="s2">&quot;cjDAPI.*\.tif&quot;</span><span class="w"> </span>--threads<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<p>The result is that we get a <cite>tiff_segment.log.txt</cite> file in the folder
+<cite>CJ_20240702_CJ052_SLIDE012</cite> as well as a binary mask, <cite>file.mask.tif</cite>
+for each <cite>file.tif</cite>.</p>
+<p>Processing 8 image of size [41, 1608, 1608] using 8 threads used less
+than 32 GB of RAM and took about 3 minutes.</p>
+</section>
+<section id="extract-radial-profiles">
+<h2>Extract radial profiles<a class="headerlink" href="#extract-radial-profiles" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>radiantkit<span class="w"> </span>measure_objects<span class="w"> </span>CJ_20240702_CJ052_SLIDE012<span class="w"> </span>cjDAPI
+</pre></div>
+</div>
+<p>This will create a
+<cite>CJ_20240702_CJ052_SLIDE012/objects/nuclear_features.tsv</cite> which
+contains some measurements of the nuclei. Though that it would produce a a <cite>radiant.pkl</cite>
+which contain the radial profiles ?</p>
+<p>What is a particle?</p>
+</section>
+<section id="select-nuclei">
+<h2>Select nuclei<a class="headerlink" href="#select-nuclei" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>radiantkit<span class="w"> </span>select_nuclei<span class="w"> </span>CJ_20240702_CJ052_SLIDE012<span class="w"> </span>cjDAPI
+</pre></div>
+</div>
+<p>This does not work at the moment.</p>
+</section>
+<section id="generate-a-report">
+<h2>Generate a report<a class="headerlink" href="#generate-a-report" title="Link to this heading"></a></h2>
+</section>
+<section id="example-script">
+<h2>Example script<a class="headerlink" href="#example-script" title="Link to this heading"></a></h2>
+<p>Given a folder structure like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── CJ_20240702_CJ052_SLIDE007
+├── CJ_20240702_CJ052_SLIDE008
+├── CJ_20240702_CJ052_SLIDE009
+├── CJ_20240702_CJ052_SLIDE010
+├── CJ_20240702_CJ052_SLIDE011
+└── CJ_20240702_CJ052_SLIDE012
+</pre></div>
+</div>
+<p>The following script would process all images and generate a report:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">set</span><span class="w"> </span>-e
+
+<span class="c1">## Settings, adjust to you images!</span>
+
+
+<span class="nv">dx</span><span class="o">=</span><span class="m">110</span><span class="w"> </span><span class="c1"># pixel size (nm)</span>
+<span class="nv">dy</span><span class="o">=</span><span class="m">110</span>
+<span class="nv">dz</span><span class="o">=</span><span class="m">300</span><span class="w"> </span><span class="c1"># axial direction</span>
+<span class="nv">nucprefix</span><span class="o">=</span>cjDAPI<span class="w"> </span><span class="c1"># Prefix of the files containing the nuclei staining</span>
+<span class="nv">nthread</span><span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="c1"># Number of concurrent threads to use</span>
+
+<span class="c1"># Per folder processing</span>
+process_cond<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+
+<span class="w">    </span><span class="c1"># Automatic 3D segmentation</span>
+<span class="w">    </span>radiantkit<span class="w"> </span>tiff_segment<span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">nthread</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--gaussian<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--inreg<span class="w"> </span><span class="s2">&quot;^</span><span class="si">${</span><span class="nv">nucprefix</span><span class="si">}</span><span class="s2">.*\.tif</span>$<span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>-y
+
+<span class="w">    </span><span class="c1"># Measure properties of the segmented objects</span>
+<span class="w">    </span>radiantkit<span class="w"> </span>measure_objects<span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">nucprefix</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">nthread</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--aspect<span class="w"> </span><span class="si">${</span><span class="nv">dz</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">dy</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">dx</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>-y
+
+<span class="w">    </span><span class="c1"># Select G1 nuclei</span>
+<span class="w">    </span><span class="c1"># Needs at least 6 nuclei</span>
+<span class="w">    </span>radiantkit<span class="w"> </span>select_nuclei<span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">nucprefix</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--k-sigma<span class="w"> </span><span class="m">2</span><span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">nthread</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>-y
+
+<span class="w">    </span><span class="c1"># Measure radial profiles for all segmented nuclei</span>
+<span class="w">    </span>radiantkit<span class="w"> </span>radial_population<span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">nucprefix</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--aspect<span class="w"> </span><span class="si">${</span><span class="nv">dz</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">dy</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">dx</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--mask-suffix<span class="w"> </span>mask_selected<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">nthread</span><span class="si">}</span><span class="w">  </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>–slice2d
+<span class="o">}</span>
+
+<span class="c1"># Process each folder / condition</span>
+
+process_cond<span class="w"> </span>CJ_20240702_CJ052_SLIDE007
+process_cond<span class="w"> </span>CJ_20240702_CJ052_SLIDE008
+process_cond<span class="w"> </span>CJ_20240702_CJ052_SLIDE009
+process_cond<span class="w"> </span>CJ_20240702_CJ052_SLIDE010
+process_cond<span class="w"> </span>CJ_20240702_CJ052_SLIDE011
+process_cond<span class="w"> </span>CJ_20240702_CJ052_SLIDE012
+
+<span class="c1"># Make a report (radiant.report.html)</span>
+<span class="c1"># using all conditions that can be found in subfolders</span>
+
+radiantkit<span class="w"> </span>report<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="radiantkit version 0.1.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, BiCroLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

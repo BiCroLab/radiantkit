@@ -1,0 +1,43 @@
+usage: radiantkit [-h] [--version]
+                  {czi_to_tiff,nd2_to_tiff,select_nuclei,export_objects,measure_objects,radial_population,radial_object,radial_trajectory,radial_points,tiff_findoof,tiff_segment,tiff_desplit,tiff_split,tiffcu,pipeline,report}
+                  ...
+
+Version:    0.1.0
+Author:     Gabriele Girelli, et al.
+Docs:       http://BiCroLab.github.io/radiantkit
+Code:       http://github.com/BiCroLab/radiantkit
+
+Radial Image Analysis Toolkit (RadIAnTkit) is a Python package
+for analysis of YFISH of the GPSeq pipeline.  
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+
+sub-commands:
+  {czi_to_tiff,nd2_to_tiff,select_nuclei,export_objects,measure_objects,radial_population,radial_object,radial_trajectory,radial_points,tiff_findoof,tiff_segment,tiff_desplit,tiff_split,tiffcu,pipeline,report}
+                        Access the help page for a sub-command with: sub-
+                        command -h
+    czi_to_tiff         Convert a czi file into single channel tiff images.
+    nd2_to_tiff         Convert a nd2 file into single channel tiff images.
+    select_nuclei       Select G1 nuclei.
+    export_objects      Export objects from masks as TIFF images.
+    measure_objects     Measure objects from masks.
+    radial_population   Generate average radial profiles for a cell
+                        population.
+    radial_object       Generate single-cell radial profiles. *NOT
+                        IMPLEMENTED*
+    radial_trajectory   Generate radial profiles along random linear
+                        trajectories. *NOT IMPLEMENTED*
+    radial_points       Measure the radial position of a set of points. *NOT
+                        IMPLEMENTED*
+    tiff_findoof        Find out of focus fields of view.
+    tiff_segment        Segment tiff images (default optimized for DAPI
+                        staining).
+    tiff_desplit        Stitch together images split with tiff_split. *NOT
+                        IMPLEMENTED*
+    tiff_split          Split a TIFF image in smaller images of the specified
+                        side(s).
+    tiffcu              (Un)compress TIFF images.
+    pipeline            Setup vanilla snakemake workflows. *NOT IMPLEMENTED*
+    report              Generate radiant report(s).

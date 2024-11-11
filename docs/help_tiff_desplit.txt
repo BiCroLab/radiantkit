@@ -1,0 +1,14 @@
+usage: radiantkit tiff_desplit [-h] [-o outdir] [-C] [--version] input
+
+Long description
+
+positional arguments:
+  input                 Path to the czi file to convert.
+
+options:
+  -h, --help            show this help message and exit
+  -o outdir, --outdir outdir
+                        Path to output TIFF folder, created if missing.
+                        Default to a folder with the input file basename.
+  -C, --compressed      Force compressed TIFF as output.
+  --version             show program's version number and exit

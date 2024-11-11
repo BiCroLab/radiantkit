@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codebase &mdash; radiantkit  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Future / to do" href="todo.html" />
+    <link rel="prev" title="Changelog" href="changelog.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            radiantkit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Codebase</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-inheritance">Class inheritance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Future / to do</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">radiantkit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Codebase</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/codebase.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="codebase">
+<h1>Codebase<a class="headerlink" href="#codebase" title="Link to this heading"></a></h1>
+<p>The code is in OOP style divided into two parts, <cite>radiantkit</cite> which
+contain the core functionality and <cite>radiantkit.scripts</cite> which contain
+the command line tools.</p>
+<p>The main entry point can be found in <cite>run.py</cite> which is also called from <cite>__main__.py</cite>.</p>
+<section id="class-inheritance">
+<h2>Class inheritance<a class="headerlink" href="#class-inheritance" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BinarizerSettings</span> <span class="o">-&gt;</span> <span class="n">Binarizer</span>
+<span class="n">BoundingElement</span>
+<span class="n">ChannelList</span>
+<span class="n">CziFile</span> <span class="o">-&gt;</span> <span class="n">CziFile2</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">CenterType</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">DistanceType</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">LaminaDistanceType</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">MidsectionType</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">ProjectionType</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">RootType</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">SegmentationType</span>
+<span class="n">Enum</span> <span class="o">-&gt;</span> <span class="n">ShellType</span>
+<span class="n">ImageBase</span> <span class="o">-&gt;</span> <span class="n">Image</span> <span class="o">-&gt;</span> <span class="n">ImageBinary</span>
+<span class="n">ImageBase</span> <span class="o">-&gt;</span> <span class="n">Image</span> <span class="o">-&gt;</span> <span class="n">ImageBinary</span> <span class="o">-&gt;</span> <span class="n">ParticleBase</span> <span class="o">-&gt;</span> <span class="n">Particle</span> <span class="o">-&gt;</span> <span class="n">Nucleus</span>
+<span class="n">ImageBase</span> <span class="o">-&gt;</span> <span class="n">Image</span> <span class="o">-&gt;</span> <span class="n">ImageGrayScale</span>
+<span class="n">ImageBase</span> <span class="o">-&gt;</span> <span class="n">Image</span> <span class="o">-&gt;</span> <span class="n">ImageLabeled</span>
+<span class="n">MultiRange</span>
+<span class="n">ND2Reader</span> <span class="o">-&gt;</span> <span class="n">ND2Reader2</span>
+<span class="n">NucleiList</span>
+<span class="n">OutputDirectories</span> <span class="o">-&gt;</span> <span class="n">Output</span>
+<span class="n">OutputDirectories</span> <span class="o">-&gt;</span> <span class="n">ReportBase</span>
+<span class="n">OutputDirectories</span> <span class="o">-&gt;</span> <span class="n">ReportMaker</span>
+<span class="n">OutputReader</span>
+<span class="n">ParticleFinder</span>
+<span class="n">ProfileMultiConditionNorm</span>
+<span class="n">ProfileSingleCondition</span>
+<span class="n">RadialDistanceCalculator</span>
+<span class="n">ReportPage</span>
+<span class="n">SeriesList</span>
+<span class="n">string</span><span class="o">.</span><span class="n">Template</span> <span class="o">-&gt;</span> <span class="n">TIFFNameTemplate</span>
+<span class="n">TIFFNameTemplateFields</span>
+</pre></div>
+</div>
+<p>The call stacks are somewhat deep and can be hard to understand</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">where</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">radiantkit</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">radiant</span><span class="p">())</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">run</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">74</span><span class="p">)</span><span class="n">radiant</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">args</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">radial_population</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">380</span><span class="p">)</span><span class="n">run</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">profiles</span> <span class="o">=</span> <span class="n">series_list</span><span class="o">.</span><span class="n">get_radial_profiles</span><span class="p">(</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">series</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">582</span><span class="p">)</span><span class="n">get_radial_profiles</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__prep_single_channel_profile</span><span class="p">(</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">series</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">506</span><span class="p">)</span><span class="n">__prep_single_channel_profile</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">channel_intensity_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__retrieve_channel_intensity_at_distance</span><span class="p">(</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">series</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">469</span><span class="p">)</span><span class="n">__retrieve_channel_intensity_at_distance</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">init_particles_distances</span><span class="p">(</span><span class="n">rdc</span><span class="p">,</span> <span class="n">reInit</span><span class="p">)</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">series</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">155</span><span class="p">)</span><span class="n">init_particles_distances</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">particle</span><span class="o">.</span><span class="n">init_distances</span><span class="p">(</span><span class="n">rdc</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">particle</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">168</span><span class="p">)</span><span class="n">init_distances</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">distances</span> <span class="o">=</span> <span class="n">rdc</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">erikw</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">radiantkit</span><span class="o">/</span><span class="n">distance</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">159</span><span class="p">)</span><span class="n">calc</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">return</span> <span class="p">(</span><span class="n">contour_dist</span><span class="o">.</span><span class="n">pixels</span><span class="p">,</span> <span class="n">center_dist</span><span class="o">.</span><span class="n">pixels</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="changelog.html" class="btn btn-neutral float-left" title="Changelog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="todo.html" class="btn btn-neutral float-right" title="Future / to do" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, BiCroLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

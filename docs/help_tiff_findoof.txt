@@ -1,0 +1,28 @@
+usage: radiantkit tiff_findoof [-h] [--output OUTPUT] [--fraction FRACTION]
+                               [--version] [--inreg REGEXP] [--threads NUMBER]
+                               [--intensity-sum] [--rename]
+                               input
+
+Calculate gradient magnitude over Z for every image in the input folder with a
+filename matching the --inreg. Use --range to change the in-focus
+definition.
+
+positional arguments:
+  input                Path to folder with tiff images.
+
+options:
+  -h, --help           show this help message and exit
+  --output OUTPUT      Path to output tsv file. Default: oof.tsv in input
+                       folder.
+  --fraction FRACTION  Fraction of stack (middle-centered) for in-focus
+                       fields. Default: .5
+  --version            show program's version number and exit
+
+advanced arguments:
+  --inreg REGEXP       Regular expression to identify input TIFF images.
+                       Default: '^(?P<dw_flag>dw_)?([^\.]*\.)?(?P<channel_name
+                       >[^/]*)_(?P<series_id>[0-
+                       9]+)(?P<ext>(_cmle)?(\.[^\.]*)?\.tiff?)$'
+  --threads NUMBER     Number of threads for parallelization. Default: 1
+  --intensity-sum      Use intensity sum instead of gradient magnitude.
+  --rename             Rename out-of-focus images by adding the '.old' suffix.

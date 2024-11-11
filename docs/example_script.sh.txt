@@ -1,0 +1,55 @@
+#!/bin/bash
+set -e
+
+## Settings, adjust to you images!
+
+
+dx=110 # pixel size (nm)
+dy=110
+dz=300 # axial direction
+nucprefix=cjDAPI # Prefix of the files containing the nuclei staining
+nthread=8 # Number of concurrent threads to use
+
+# Per folder processing
+process_cond() {
+
+    # Automatic 3D segmentation
+    radiantkit tiff_segment ${1} \
+               --threads ${nthread} \
+               --gaussian 2.0 \
+               --inreg "^${nucprefix}.*\.tif$" \
+               -y
+
+    # Measure properties of the segmented objects
+    radiantkit measure_objects ${1} ${nucprefix} \
+               --threads ${nthread} \
+               --aspect ${dz} ${dy} ${dx} \
+               -y
+
+    # Select G1 nuclei
+    # Needs at least 6 nuclei
+    radiantkit select_nuclei ${1} ${nucprefix} \
+               --k-sigma 2 --threads ${nthread} \
+                -y
+
+    # Measure radial profiles for all segmented nuclei
+    radiantkit radial_population ${1} ${nucprefix} \
+               --aspect ${dz} ${dy} ${dx} \
+               --mask-suffix mask_selected \
+               --threads ${nthread}  -y \
+               –slice2d
+}
+
+# Process each folder / condition
+
+process_cond CJ_20240702_CJ052_SLIDE007
+process_cond CJ_20240702_CJ052_SLIDE008
+process_cond CJ_20240702_CJ052_SLIDE009
+process_cond CJ_20240702_CJ052_SLIDE010
+process_cond CJ_20240702_CJ052_SLIDE011
+process_cond CJ_20240702_CJ052_SLIDE012
+
+# Make a report (radiant.report.html)
+# using all conditions that can be found in subfolders
+
+radiantkit report .

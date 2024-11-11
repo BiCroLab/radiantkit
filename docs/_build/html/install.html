@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; radiantkit  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Details" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            radiantkit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Details</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-pipx-recommended">Install with <code class="docutils literal notranslate"><span class="pre">pipx</span></code> (recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-pip">Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#check-your-installation">Check your installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#when-python-3-12">When Python &lt; 3.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codebase.html">Codebase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Future / to do</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">radiantkit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Directly calling <cite>pip install radiantkit</cite> or <cite>pipx
+install radiantkit</cite> will install an outdated version – Always
+download the latest version from <a class="reference external" href="https://www.github.com/BiCroLab/radiantkit/">github</a>.</p>
+</div>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">radiantkit</span></code> has been tested with Python 3.12. The current
+dependencies are listed in the <cite>pyproject.toml</cite> file and should in
+most cases be handled automatically by pip/pipx/builddtools.</p>
+</section>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h2>
+<p>The main options are to install using pip or pipx, depending on your preferences.</p>
+<section id="install-with-pipx-recommended">
+<h3>Install with <code class="docutils literal notranslate"><span class="pre">pipx</span></code> (recommended)<a class="headerlink" href="#install-with-pipx-recommended" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/BiCroLab/radiantkit.git
+<span class="nb">cd</span><span class="w"> </span>radiantkit
+pipx<span class="w"> </span>install<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="install-with-pip">
+<h3>Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Link to this heading"></a></h3>
+<p>This is not recommended unless you know what you are doing. In most
+cases you would like to set up an virtual enviroment first (something
+that pipx handles automatically).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/BiCroLab/radiantkit.git
+<span class="nb">cd</span><span class="w"> </span>radiantkit
+pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="check-your-installation">
+<h2>Check your installation<a class="headerlink" href="#check-your-installation" title="Link to this heading"></a></h2>
+<p>To check your installation, simply run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>radiantkit<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>If you see the version of <code class="docutils literal notranslate"><span class="pre">radiantkit</span></code> that you installed, everything
+went well! If you see an error or <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>, try again or
+<a class="reference external" href="https://github.com/BiCroLab/radiantkit/issues">get in touch</a>!</p>
+</section>
+<section id="when-python-3-12">
+<h2>When Python &lt; 3.12<a class="headerlink" href="#when-python-3-12" title="Link to this heading"></a></h2>
+<p>Python 3.12 or later is a hard requirement, however, in most cases you
+can install that. For example: Ubuntu 22.04.5 LTS ships with Python
+3.9 but Python 3.12 can be installed with commands like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3.12-*
+</pre></div>
+</div>
+<p>To make sure that the correct version of Python is used, the simplest
+option is to create a virtual environment. It should be possible to
+install and run radiantkit like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming that you are in the root folder of the repository</span>
+python3.12<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>.
+python<span class="w"> </span>-m<span class="w"> </span>radiantkit<span class="w"> </span>-h
+<span class="c1"># Don&#39;t forget to activate the virtual environment</span>
+<span class="c1"># the next time that you use radiantkit</span>
+</pre></div>
+</div>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h2>
+<p>If you prefer to use Docker, you can use the supplied <cite>Dockerfile</cite> to
+assemble an image. From the root directory of the repository, run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>radiantkit<span class="w"> </span>-f<span class="w"> </span>Dockerfile<span class="w"> </span>.
+<span class="c1"># And possibly</span>
+$<span class="w"> </span>docker<span class="w"> </span>tag<span class="w"> </span>radiantkit<span class="w"> </span>bicrolab/radiantkit:0.1.0
+</pre></div>
+</div>
+<p>If everything went fine, there should now be an image:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if there is an image</span>
+$<span class="w"> </span>docker<span class="w"> </span>image<span class="w"> </span>ls
+REPOSITORY<span class="w">   </span>TAG<span class="w">       </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">          </span>SIZE
+radiantkit<span class="w">   </span>latest<span class="w">    </span>9a486800b424<span class="w">   </span><span class="m">35</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">   </span>858MB
+
+<span class="c1"># It is not running yet</span>
+$<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">     </span>COMMAND<span class="w">   </span>CREATED<span class="w">   </span>STATUS<span class="w">    </span>PORTS<span class="w">     </span>NAMES
+</pre></div>
+</div>
+<p>To start it and attach to it directly, you could use:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;/my/local/data/&#39;</span>:<span class="s1">&#39;/data/&#39;</span><span class="w"> </span>radiantkit
+<span class="c1"># See that it looks ok:</span>
+$<span class="w"> </span>root@7330fbf2843c:/#<span class="w"> </span>radiantkit<span class="w"> </span>--version
+$<span class="w"> </span>./root/.local/bin/radiantkit<span class="w"> </span><span class="m">0</span>.1.0
+</pre></div>
+</div>
+<p>And you are ready to run it on your local data which you will find
+under <cite>/data</cite> in the container.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Details" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, BiCroLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

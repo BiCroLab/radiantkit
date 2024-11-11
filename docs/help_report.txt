@@ -1,0 +1,22 @@
+usage: radiantkit report [-h] [--subdir STRING] [--not-root] [--inreg REGEXP]
+                         [--offline] [--version]
+                         input
+
+Long description
+
+positional arguments:
+  input            Path to folder with radiant output.
+
+options:
+  -h, --help       show this help message and exit
+  --version        show program's version number and exit
+
+advanced arguments:
+  --subdir STRING  Name of subfolder for nested search. Default: 'objects'
+  --not-root       Input folder is single-condition (not root folder).
+  --inreg REGEXP   Regular expression to identify input TIFF images. Must
+                   contain 'channel_name' and 'series_id' fields. Default: '^(
+                   ?P<dw_flag>dw_)?([^\.]*\.)?(?P<channel_name>[^/]*)_(?P<seri
+                   es_id>[0-9]+)(?P<ext>(_cmle)?(\.[^\.]*)?\.tiff?)$'
+  --offline        Generate report that does not require a live internet
+                   connection to be visualized.

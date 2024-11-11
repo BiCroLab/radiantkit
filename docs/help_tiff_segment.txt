@@ -1,0 +1,76 @@
+usage: radiantkit tiff_segment [-h] [-o DIRPATH] [--outprefix TEXT]
+                               [--outsuffix TEXT] [--neighbour NUMBER]
+                               [--radius MIN_RADIUS MAX_RADIUS]
+                               [--min-Z FRACTION] [--mask-2d DIRPATH]
+                               [--no-clear-XY] [--clear-Z]
+                               [--gaussian GAUSSIAN] [--only-focus]
+                               [--most-objects] [--dilate-fill-erode NUMBER]
+                               [--TCZYX] [--labeled] [--uncompressed]
+                               [--no-rescaling] [--debug] [--silent]
+                               [--inreg REGEXP] [--threads NUMBER] [-y]
+                               [--version]
+                               input
+
+Perform automatic 3D segmentation of TIFF images. The default parameters are
+optimized for nuclear DNA staining and voxel size of 0.13x0.13x0.3 uM.
+
+The input images are first identified based on a regular expression matched to
+the file name. Then, they are re-scaled (if deconvolved with Huygens software).
+Afterwards, a global (Otsu) and local (gaussian) thresholds are applied to
+binarize the image in 3D. Finally, holes are filled in 3D and closed to remove
+small objects. Finally. objects are filtered based on volume and Z size.
+Moreover, objects touching the XY image borders are discarded.
+
+If a folder path is provided with the -2 option, any binary file with name
+matching the one of an input image will be combined to the binarized image.
+
+Use the --labeled flag to label identified objects with different intensity
+levels. By default, the script generates compressed binary tiff images; use the
+--uncompressed flag to generate normal tiff images instead.
+
+Input images that have the specified prefix and suffix are not segmented.
+
+positional arguments:
+  input                 Path single tiff image, or to folder containing
+                        deconvolved tiff images.
+
+options:
+  -h, --help            show this help message and exit
+  -o DIRPATH            Path to output TIFF folder. Defaults to the input
+                        folder
+  --outprefix TEXT      Prefix for output binarized images name. Default: ''.
+  --outsuffix TEXT      Suffix for output binarized images name. Default:
+                        'mask'.
+  --neighbour NUMBER    Side of neighbourhood region for adaptig thresholding.
+                        Must be odd. Default: 101
+  --radius MIN_RADIUS MAX_RADIUS
+                        Filter range of object radii [px]. Default: [10, Inf]
+  --min-Z FRACTION      Minimum stack fraction occupied by an object. Default:
+                        .25
+  --mask-2d DIRPATH     Path to folder with 2D masks with matching name, to
+                        combine with 3D masks.
+  --no-clear-XY         Do not remove objects touching the XY edges of the
+                        stack.
+  --clear-Z             Remove objects touching the bottom/top of the stack.
+  --gaussian GAUSSIAN   Apply a Gaussian low pass filter to the image
+  --version             show program's version number and exit
+
+slice arguments:
+  --only-focus          Export mask for the most in-focus slice only.
+  --most-objects        Export mask only for the slice with most objects.
+
+advanced arguments:
+  --dilate-fill-erode NUMBER
+                        Number of pixels for dilation/erosion steps in a
+                        dilate-fill-erode operation. Default: 0. Set to 0 to
+                        skip.
+  --TCZYX               Input is TCZYX instead of TZCYX.
+  --labeled             Export masks as labeled instead of binary.
+  --uncompressed        Generate uncompressed TIFF binary masks.
+  --no-rescaling        Do not rescale image even if deconvolved.
+  --debug               Log also debugging messages. Silenced by --silent.
+  --silent              Limits logs to critical events only.
+  --inreg REGEXP        Regular expression to identify input TIFF images.
+                        Default: '^.*\.tiff?$'
+  --threads NUMBER      Number of threads for parallelization. Default: 1
+  -y, --do-all          Do not ask for settings confirmation and proceed.

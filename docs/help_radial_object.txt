@@ -1,0 +1,11 @@
+usage: radiantkit radial_object [-h] [--version] input ref_channel
+
+Long description
+
+positional arguments:
+  input        Path to folder containing deconvolved tiff images and masks.
+  ref_channel  Name of channel with DNA staining intensity.
+
+options:
+  -h, --help   show this help message and exit
+  --version    show program's version number and exit
