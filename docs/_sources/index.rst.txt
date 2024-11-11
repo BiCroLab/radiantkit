@@ -15,20 +15,20 @@ archived, repository at
 Pipeline summary
 ----------------
 
--  **Convert** proprietary microscope formats CZI (Zeiss) and ND2
-   (Nikon) to the TIFF format.
+- **Convert** proprietary microscope formats CZI (Zeiss) and ND2
+  (Nikon) to the TIFF format.
 
--  **Segment** nuclei in 2D or 3D.
+- **Segment** nuclei in 2D or 3D.
 
 - **Select** nuclei in G1-phase of the cell cycle, based on DNA
-   staining and nuclear volume.
+  staining and nuclear volume.
 
--  **Extract** segmented objects and **measure** their features (e.g.,
-   volume, integral of intensity, shape descriptors).
+- **Extract** segmented objects and **measure** their features (e.g.,
+  volume, integral of intensity, shape descriptors).
 
--  Measure **radial patterns** as radial profiles (with different
-   center definitions), and characterize them (e.g., peaks,
-   inflection points, contrast).
+- Measure **radial patterns** as radial profiles (with different
+  center definitions), and characterize them (e.g., peaks,
+  inflection points, contrast).
 
 - And finally, generate interactive reports.
 
