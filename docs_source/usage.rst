@@ -164,9 +164,9 @@ Below follow the complete options for the `radial_population` module.
 
 .. attention::
 
-   It is recommended that `--slice2d` is used in most cases.
+   It is recommended that ``--slice2d`` is used in most cases.
 
-.. versionadded:: 0.1.1 `--slice2d`
+.. versionadded:: 0.1.1 ``--slice2d``
 
 
 

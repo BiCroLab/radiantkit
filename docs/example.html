@@ -123,16 +123,15 @@ than 32 GB of RAM and took about 3 minutes.</p>
 </div>
 <p>This will create a
 <cite>CJ_20240702_CJ052_SLIDE012/objects/nuclear_features.tsv</cite> which
-contains some measurements of the nuclei. Though that it would produce a a <cite>radiant.pkl</cite>
-which contain the radial profiles ?</p>
-<p>What is a particle?</p>
+contains some measurements of the nuclei.</p>
 </section>
 <section id="select-nuclei">
 <h2>Select nuclei<a class="headerlink" href="#select-nuclei" title="Link to this heading"></a></h2>
+<p>This step looks at the size and intensity of the nuclei and
+automatically selects the nuclei that looks like non G2.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>radiantkit<span class="w"> </span>select_nuclei<span class="w"> </span>CJ_20240702_CJ052_SLIDE012<span class="w"> </span>cjDAPI
 </pre></div>
 </div>
-<p>This does not work at the moment.</p>
 </section>
 <section id="generate-a-report">
 <h2>Generate a report<a class="headerlink" href="#generate-a-report" title="Link to this heading"></a></h2>
@@ -188,7 +187,7 @@ process_cond<span class="o">()</span><span class="w"> </span><span class="o">{</
 <span class="w">               </span>--aspect<span class="w"> </span><span class="si">${</span><span class="nv">dz</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">dy</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">dx</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">               </span>--mask-suffix<span class="w"> </span>mask_selected<span class="w"> </span><span class="se">\</span>
 <span class="w">               </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">nthread</span><span class="si">}</span><span class="w">  </span>-y<span class="w"> </span><span class="se">\</span>
-<span class="w">               </span>–slice2d
+<span class="w">               </span>--slice2d
 <span class="o">}</span>
 
 <span class="c1"># Process each folder / condition</span>

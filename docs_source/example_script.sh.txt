@@ -37,7 +37,7 @@ process_cond() {
                --aspect ${dz} ${dy} ${dx} \
                --mask-suffix mask_selected \
                --threads ${nthread}  -y \
-               –slice2d
+               --slice2d
 }
 
 # Process each folder / condition

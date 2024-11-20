@@ -51,19 +51,17 @@ Extract radial profiles
 
 This will create a
 `CJ_20240702_CJ052_SLIDE012/objects/nuclear_features.tsv` which
-contains some measurements of the nuclei. Though that it would produce a a `radiant.pkl`
-which contain the radial profiles ?
-
-What is a particle?
+contains some measurements of the nuclei.
 
 Select nuclei
 -------------
 
+This step looks at the size and intensity of the nuclei and
+automatically selects the nuclei that looks like non G2.
+
 .. code:: shell
 
           radiantkit select_nuclei CJ_20240702_CJ052_SLIDE012 cjDAPI
-
-This does not work at the moment.
 
 Generate a report
 -----------------
