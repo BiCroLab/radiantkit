@@ -275,7 +275,7 @@ def parse_arguments(args: argparse.Namespace) -> argparse.Namespace:
 
 
 def print_settings(args: argparse.Namespace, clear: bool = True) -> str:
-    s = f"""# Automatic 3D segmentation v{args.version}
+    s = f"""# tiff_segment v{args.version}
 
     ---------- SETTING : VALUE ----------
 
