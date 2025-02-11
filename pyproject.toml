@@ -40,5 +40,8 @@ dependencies = [
 [tool.setuptools]
 packages=['radiantkit', 'radiantkit.scripts']
 
+[tool.setuptools.dynamic]
+version = {attr = "radiantkit.__version__"}
+
 [project.scripts]
 radiantkit = "radiantkit.run:radiant"
