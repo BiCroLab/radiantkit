@@ -11,6 +11,11 @@ describe any changes to the original repository.
 
 _If you want to get in touch, please open an [issue
 ticket](https://github.com/BiCroLab/radiantkit/issues)_.
+
+<img src="img/Picture 1.jpg" alt="Radial profile" width="920"/>
+
+###### Image: Adapted from Fig.1 [GPSeq reveals the radial organization of chromatin in the cell nucleus.](https://www.nature.com/articles/s41587-020-0519-y)
+
 ***
 
 ## Installation instructions
